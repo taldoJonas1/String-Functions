@@ -134,3 +134,20 @@ function ex12() {
     let resposta = str2.length
     console.log(resposta - 1)
 }
+
+function ex13() {
+// Leia um vetor contendo letras de uma frase inclusive os espaços em branco.  
+// Retire os espaços em branco do vetor e depois escreva o vetor resultante.
+
+}
+
+function ex14() {
+// Faça um programa em que troque todas as ocorrências de uma letra L1 pela 
+// letra L2 em uma string. A string e as letras L1 e L2 devem ser fornecidas 
+// pelo usuário.
+    str = prompt('Insira uma string')
+    l1 = prompt('Insira a LETRA (L1) que será substituida')
+    l2 = prompt('Insira a LETRA (L2) que substituirá L1')
+    novaStr = str.replaceAll(l1, l2)
+    console.log(novaStr)
+}
