@@ -138,7 +138,15 @@ function ex12() {
 function ex13() {
 // Leia um vetor contendo letras de uma frase inclusive os espaços em branco.  
 // Retire os espaços em branco do vetor e depois escreva o vetor resultante.
-
+    let str = prompt('Insira uma frase')
+    let vetor = str.split('')
+    for(i=0;i<vetor.length;i++){
+        if(vetor[i] == ' '){
+            vetor[i] = ''
+        }
+    }
+    vetor = vetor.join('')
+    console.log(vetor)
 }
 
 function ex14() {
@@ -150,4 +158,223 @@ function ex14() {
     l2 = prompt('Insira a LETRA (L2) que substituirá L1')
     novaStr = str.replaceAll(l1, l2)
     console.log(novaStr)
+}
+
+function ex15(){
+// Leia a idade e o primeiro nome de 10 pessoas. Seu programa deve terminar 
+// quando uma idade negativa for digitada. Ao terminar, seu programa deve 
+// escrever o nome e a idade das pessoas mais jovens e mais velhas.
+    let vetIDADE = []
+    let vetNOME = []
+    for(i=0;i<10;i++){
+        vetIDADE[i] = Number(prompt(`IDADE [${i+1}]: `))
+        if (vetIDADE[i] < 0){
+            break;
+        }
+        vetNOME[i] = prompt(`NOME [${i+1}]: `)
+    }
+    let maisNovo1 = vetIDADE[0]
+    let maisNovo2 = vetNOME[0]
+    let maisVelho1 = vetIDADE[0]
+    let maisVelho2 = vetNOME[0]
+
+    for(i=0;i<vetIDADE.length;i++){
+        if (maisNovo1 > vetIDADE[i] && vetIDADE[i] > 0 ){
+            maisNovo1 = vetIDADE[i]
+            maisNovo2 = vetNOME[i]
+        }
+        if (maisVelho1 < vetIDADE[i]){
+            maisVelho1 = vetIDADE[i]
+            maisVelho2 = vetNOME[i]
+        }
+    }
+
+    if(vetIDADE.length < 1 || vetIDADE[0] < 0){
+        console.log("Nenhum valor válido informado")
+    }
+    else{
+        console.log(`Mais velho: ${maisVelho2} com ${maisVelho1} anos.`)
+        console.log(`Mais novo: ${maisNovo2} com ${maisNovo1} anos.`)
+    }
+}
+
+function ex16() {
+// Receba  duas  frases  distintas  e  imprima  de  maneira  invertida, 
+// trocando as letras A por '*'.
+    let str2 = prompt("Frase 2")
+    let str1 = prompt("Frase 1")
+    let nova_str1 = str1.split('').reverse().join('').replace(/A/g, '*').replace(/a/g, '*')
+    let nova_str2 = str2.split('').reverse().join('').replace(/A/g, '*').replace(/a/g, '*')
+    console.log(nova_str1)
+    console.log(nova_str2)
+}
+
+function ex17() {
+// Receba uma string S e inteiros não-negativos I e J e imprima o 
+// segmento S[I..J].
+    let s = prompt("Frase 1")
+    let i = Number(prompt("Insira I"))
+    let j = Number(prompt("Insira J"))
+    let text = s.slice(i,j+1)
+    console.log(text)
+}
+
+function ex18() {
+// Receba  do  usuário  uma  string  S,  um  caractere  C,  e  uma posição I e 
+// devolve o índice da primeira posição da string onde foi encontrado o caractere 
+// C. A procura deve começar a partir da posição I.
+    let s = prompt("String")
+    let caractere = prompt("Caractere")
+    let posicao = Number(prompt("Posição"))
+    text = s.indexOf(caractere, posicao)
+    if(text == -1){
+        console.log("Caractere não encontrado")
+    }
+    else{
+        console.log(`Caracter encontrado na posição ${text}`)
+    }
+}
+
+function ex19() {
+// Leia duas palavras e diga qual delas vem primeiro na ordem alfabética. 
+// Dica: ‘a’ é menor do que ‘b’.
+    let str1 = prompt("String 1")
+    let str2 = prompt("String 2")
+    let i = 0
+    letra1 = str1[0]
+    letra2 = str2[0]
+    if(letra1<letra2){
+        console.log(`A palavra que vem prieiro na ordem alfabética é ${str1}`)
+    }
+    else if(letra1>letra2){
+        console.log(`A palavra que vem prieiro na ordem alfabética é ${strs}`)
+    }
+    else if(letra1 == letra2){ 
+        do{
+            i++
+            letra1 = str1[i]
+            letra2 = str2[i] 
+            if(letra1<letra2){
+                console.log(`A palavra que vem prieiro na ordem alfabética é '${str1}'`)
+            }
+            else if(letra1>letra2){
+                console.log(`A palavra que vem prieiro na ordem alfabética é '${str2}'`)
+            }
+        }while(str1[i] == str2[i])
+    }
+}
+
+function ex20() {
+// O Código de César é uma das mais simples e conhecidas técnicas de criptografia. 
+// É um tipo de substituição na qual cada letra do texto é substituída por outra, 
+// que se apresenta no alfabeto abaixo dela um nu´mero fixo de vezes. Por exemplo, 
+// com uma troca de três posições, ‘A’ seria substituído por ‘D’, ‘B’ se tornaria 
+// ‘E’, e assim por diante. Faça uso desse Código de César (3 posições), entre com 
+// uma string e retorne a string codificada. Exemplo:
+// String: a ligeira raposa marrom saltou sobre o cachorro cansado
+// Nova string: D OLJHLUD UDSRVD PDUURP VDOWRX VREUH R FDFKRUUR FDQVDGR
+    let str = prompt("String").toUpperCase()
+    let alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+    let aux = ''
+    let novastr = ''
+    let j = 0
+    for(i=0;i<str.length;i++){
+        while(str[i] != alfabeto[j]){
+            j++
+        }
+        aux = alfabeto[j+3]
+        novastr = novastr + aux    
+    }
+    console.log(novastr)
+}
+
+function ex21() {
+// Dada uma string, diga se ela é um palíndromo ou não. Lembrando que um palíndromo é uma palavra que tenha a 
+// propriedade de poder ser lida tanto da direita para a esquerda como da esquerda para a direita. Exemplo:
+// ovo
+// arara
+// Socorram-me, subi no ônibus em Marrocos. 
+// Anotaram a data da maratona
+    let nova_str = str.split('').reverse().join('')
+    if(str == nova_str){
+        console.log("É um palíndromo")
+    }
+    else{
+        console.log("Não é um palíndromo")
+    }
+}
+
+function ex22() {
+// Leia duas strings fornecidas pelo usuário e verifique se a segunda string 
+// lida esta contida no final da primeira, retornando o resultado da verificação.
+    let str1 = prompt("String 1")
+    let str2 = prompt("String 2")
+    if(str1.includes(str2)){
+        console.log(`${str2} esta contido em ${str1}`)
+    }
+    else{
+        console.log("Não esta contido")
+    }
+}
+
+function ex23() {
+// Leia duas strings, str1 e str2, e um valor inteiro positivo N. 
+// Concatene não mais que N caracteres da string str2 à string str1 e termine str1 com ‘\0’.
+    let str1 = prompt("String 1")
+    let str2 = prompt("String 2")
+    let n = Number(prompt("N"))
+    nova_str = str1+str2.slice(0,n)
+    console.log(nova_str)
+}
+
+function ex24() {
+// Leia duas cadeias de caracteres A e B. Determine quantas vezes a cadeia A ocorre na cadeia B.
+    let str1 = prompt("String 1")
+    let str2 = prompt("String 2")
+    let x1 = str1.split('')
+    let x2 = str2.split('')
+    console.log(x1)
+    console.log(x2)
+    let cont = 0
+    for(i=0;i<x2.length;i++){
+        for(j=0;j<x1.length;j++){
+            if(x1[j] == x2[i]){
+                cont++
+            }
+        }
+    }
+    console.log(cont)
+}
+
+function ex25() {
+// Leia uma cadeia de caracteres no formato “DD/MM/AAAA” e copie o dia, mês e ano para 3 variáveis 
+// inteiras. Antes disso, verifique se as barras estão no lugar certo, e se DD, MM e AAAA são numéricos.
+    let str = prompt("String")
+    let dia = ''
+    let mes = ''
+    let ano = ''
+    if(str.indexOf('/') != 2 && str.lastIndexOf('/') != 5){
+        console.log("As barras não estão no lugar correto. ")
+    }
+    else{
+        str.split('')
+        for(i=0;i<str.length;i++){
+            if(str.includes('0','1','2','3','4','5','6','7','8','9')){
+                if(i == 0 || i == 1){
+                    dia = dia.concat(str[i])
+                }
+                else if(i == 3 || i == 4){
+                    mes = mes.concat(str[i])
+                }
+                else if(i>5){
+                    ano =ano.concat(str[i])
+                }
+            }
+            else{
+                console.log("Entre apenas com números e barras. ")
+                break;
+            }
+        }
+        console.log(`DIA: ${dia}\nMES: ${mes}\nANO: ${ano}`)
+    }
 }
